@@ -34,33 +34,74 @@ module.exports = {
     lastUpdated: false,
     nav: [
       {
-        text: 'Ch-1',
-        link: '/Ch-1/',
+        text: 'Ch-1 概述',
+        link: '/Ch-1 概述/',
       },      
       {
-        text: 'Ch-2',
-        link: '/Ch-2/',
+        text: 'Ch-2 交易所',
+        link: '/Ch-2 交易所/',
       },
       {
-        text: 'Ch-3',
-        link: '/Ch-3/'
+        text: 'Ch-3 借贷',
+        link: '/Ch-3 借贷/'
       },
+      {
+        text: 'Ch-4 稳定币',
+        link: '/Ch-4 稳定币/'
+      },      
       {
         text: 'VuePress',
         link: 'https://v1.vuepress.vuejs.org'
       }
     ],
     sidebar: {
-      '/guide/': [
+      '/Ch-1 概述/': [
         {
-          title: 'Guide',
+          title: '概述',
           collapsable: false,
           children: [
             '',
-            'using-vue',
-          ]
+          ]   
         }
       ],
+      '/Ch-2 交易所/': [
+        {
+          title: '交易所',
+          collapsable: false,
+          children: [
+            '',
+            '2-2 定价曲线',
+            '2-3 流动性',
+          ]   
+        }
+      ],
+      '/Ch-3 借贷/': [
+        {
+          title: '借贷',
+          collapsable: false,
+          children: [
+            '',
+          ]   
+        }
+      ],
+      '/Ch-4 稳定币/': [
+        {
+          title: '稳定币',
+          collapsable: false,
+          children: [
+            '',
+          ]   
+        }
+      ],
+      '/Ch-5 聚合器/': [
+        {
+          title: '聚合器',
+          collapsable: false,
+          children: [
+            '',
+          ]   
+        }
+      ],      
     }
   },
 
