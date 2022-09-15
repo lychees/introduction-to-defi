@@ -1,5 +1,5 @@
 
-# Uniswap V2
+# 2-2 Uniswap V2
 ## Uniswap 简介
 
 本章介绍去中心化交易所 Uniswap，Uniswap 是一个运行在以太坊上的自动化做市商协议，用于 Ethereum 上各个代币之间的交换。它使用自动化做市商（Automated Market Maker, a.k.a. AMM）技术而非订单簿（Order Book），任何人在任何时候都可以向合约发起交易，任何人任何时候也都可以通过向合约提供流动性赚取交易过程中的手续费（每笔交易的 0.3%）并且随时取回这些流动性。任何人也都可以通过提供初始流动性池而创建一个新的交易对。Uniswap 最鲜明的特征就是在交易的前后维持代币数量的乘积不变（Constant Product Market Maker）。
