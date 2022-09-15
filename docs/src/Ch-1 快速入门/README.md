@@ -1,6 +1,4 @@
-# Ch.1 去中心化金融概述
-
-## DeFi 乐高
+# Ch-1 快速入门
 
 DeFi 是去中心化金融「Decentralized Finance」的缩写，旨在通过去中心化的方式以代替中间人重新创建的金融系统，最简单的例子可能是分账（Escrow）与场外担保交易（Over-the-counter Exchange），通过使用智能合约，可以通过十几行核心代码可以去除这些金融服务中原本由合同或者中间人完成的部分（参见本章习题）。而一旦相关的金融服务完成自动化，它们之间就可以像乐高积木一样以无许可的方式将这些模块相互组合起来而产生更加复杂的，甚至是传统金融系统无法实现的功能，例如闪电贷。
 
@@ -13,6 +11,17 @@ DeFi 是去中心化金融「Decentralized Finance」的缩写，旨在通过去
 在最后一章中，我们将再次回到[^Junya]本节标题中所抛出的这个问题 —— 什么是 DeFi。
 
 [^Junya]: Junya Ishigami, Freeing Architecture
+
+## 如何阅读本书
+
+本书不是一本密码学著作，也不是一本深入介绍以太坊、它的架构、共识算法、账户抽象以及 EVM、
+前者可以参考 Introduction to Modern Cryptography 或任何一本其它的系统的密码学著作。
+后者可以参考 Mastering Ethereum。
+
+本书**也**不是一本关于 Solidity 的书籍，因而不会像其它 Solidity 的书籍一样过早的浸入到那些与语法与工程相关的细节中去，这些内容可参考 Solidity Programming Essentials、Ethereum Smart Contract Development in Solidity 等著作，或者在以太坊的官网文档中查阅最新的资料。
+
+本书是一本**聚焦**于研究 DeFi 类合约设计与代码结构的书籍，DeFi 是以太坊上应用最为广泛，影响力最为巨大，生命力最为繁盛的领域，熟悉 DeFi 产品的开发技术和设计方法也会对我们探索其它种类的应用起到帮助。
+
 
 ## DeFi 的特性
 
@@ -49,27 +58,3 @@ DeFi 是去中心化金融「Decentralized Finance」的缩写，旨在通过去
 —— [Donald E. Knuth, The Art of Computer Programming, fasc1](http://www.cs.utsa.edu/~wagner/knuth/)
 
 DeFi 是一个正在迅速发展的领域，因而纸质资料的一大困难就是无法保持持续的更新，例如，从 2018 年，到 2020 年，Solidity 的版本号就跨越了至少 3 个版本。因而我们选用的是一些在链上已经经过验证的经典项目的经典代码，这些代码不会因为版本的更迭而丧失生命力。
-
-## 本章注记
-
-### 比特币与区块链
-关于区块链的知识很多分散在互联网上，最系统性的纸质资料是 [德烈亚斯·安东诺普洛斯(Andreas Antonopoulos)](https://en.wikipedia.org/wiki/Andreas_Antonopoulos) 所撰写的系列书籍。
--[《精通比特币》](https://github.com/bitcoinbook/bitcoinbook)
--[《精通以太坊》](https://github.com/ethereumbook/ethereumbook)。
-
-### Solidity
-最简单和主流智能合约开发语言是以太坊的 Solidity。关于 Solidity 的相关知识最全面的介绍是 [以太坊官方文档](https://docs.soliditylang.org/)。Youtube 主播 Hung-Ying Tai，也做过两期全面的关于 Solidity 开发的介绍，包括 [2018](https://www.youtube.com/watch?v=z2FEikbDqoA&list=PLHmOMPRfmOxSJcrlwyandWYiuP9ZAMYoF) 和 [2020](https://www.youtube.com/watch?v=l6xmGVweJyk&list=PLHmOMPRfmOxQ3HSlId8KAKxnt8yuyTZVk) 两个版本。
-
-### 其他智能合约应用
-
-DeFi 产品，因为其对安全性和去信任的需求，同时，相对的，对性能的不敏感，被称为以太坊的杀手级应用，是目前区块链上用户最多，资金体量最大，应用最广泛的分支。除了 DeFi 之外，智能合约也有一些其他重要的应用。ScalarCapital 的 CoFounder Linda Xie 撰写过一组初学者指南，介绍目前应用最广泛的几类产品。
-
-- [DeFi 初学者指南](https://www.matataki.io/p/10718)
-- [NFTs 初学者指南]()
-- [DAOs 初学者指南]()
-- [社交代币初学者指南](https://www.matataki.io/p/10876)
-
-### 其它
-
-- [DeFi 懒人包：去中心化金融指南](https://blocktrend.gitbook.io/defi/)
-- [区块链社会学](https://matataki.io/p/4804)

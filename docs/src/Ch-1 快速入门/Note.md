@@ -1,3 +1,4 @@
+
 # 本章注记
 
 ## 比特币与区块链
@@ -18,6 +19,5 @@ DeFi 产品，因为其对安全性和去信任的需求，同时，相对的，
 - [社交代币初学者指南](https://www.matataki.io/p/10876)
 
 ## 其它
-
 - [DeFi 懒人包：去中心化金融指南](https://blocktrend.gitbook.io/defi/)
 - [区块链社会学](https://matataki.io/p/4804)

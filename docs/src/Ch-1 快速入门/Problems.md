@@ -1,4 +1,3 @@
-
 # 习题
 ## 1.1 分账合约（Escrow）N
 [这个例子来自 Vitalik、Taipei Ethereum Meetup #11 Vitalik Buterin Keynote Special](https://www.youtube.com/watch?v=MlaLRgUYeLo)
@@ -121,4 +120,5 @@ interface IERC20 {
 
 请推广这个合约的功能，支持使用一个第三方 multisig 钱包，修改参与的账户与分配比例。
 
-## 
+## 2.1 场外担保交易合约 OTC Exchange SR
+这个例子来自这里：https://www.bilibili.com/video/BV1Ht4y197h8?p=28

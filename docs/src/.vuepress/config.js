@@ -63,23 +63,31 @@ module.exports = {
       },            
     ],
     sidebar: {
-      '/Ch-1 概述/': [
+      '/Ch-1 快速入门/': [
         {
-          title: '概述',
+          title: 'Ch-1 快速入门',
           collapsable: false,
           children: [
             '',
+            '1-1 代币标准',
+            '1-2 计数器合约',
+            'Problems',
+            'Note',
           ]   
         }
       ],
-      '/Ch-2 交易所/': [
+      '/Ch-2 去中心化交易所/': [
         {
-          title: '交易所',
+          title: 'Ch-2 去中心化交易所',
           collapsable: false,
           children: [
             '',
-            '2-2 定价曲线',
-            '2-3 流动性',
+            '2-1 Proof of Week Hand',
+            '2-2 Uniswap V2',
+            '2-3 Curve',
+            '2-4 Uniswap V3',
+            'Problems',
+            'Note',            
           ]   
         }
       ],
@@ -119,5 +127,10 @@ module.exports = {
   plugins: [
     '@vuepress/plugin-back-to-top',
     '@vuepress/plugin-medium-zoom',
-  ]
+  ],
+  markdown: {
+    extendMarkdown: md => {
+      md.use(require("markdown-it-footnote"));
+    }
+  }
 }
