@@ -4,3 +4,6 @@
 - [A beginner’s guide to DAOs](https://linda.mirror.xyz/Vh8K4leCGEO06_qSGx-vS5lvgUqhqkCz9ut81WwCP2o)
 - [A beginner's guide to social tokens](https://linda.mirror.xyz/4PDBWBMpFFPVEsP5EGgg5to2AyEpEHEXasq_K0b-yYk)
 - [Key learnings from DAOs](https://linda.mirror.xyz/BIasTPr7Ym_rfbhxpKjlMqKCz3qVMaFgQeV3EphkO-E)
+
+```solidity
+```
