@@ -2,6 +2,8 @@
 sidebar: auto
 ---
 
+- [https://github.com/Jeiwan/uniswapv3-book](https://github.com/Jeiwan/uniswapv3-book)
+
 # Ch.2 Uniswap 去中心化交易所
 ## Uniswap 简介
 
