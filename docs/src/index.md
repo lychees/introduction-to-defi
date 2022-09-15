@@ -3,7 +3,7 @@ home: true
 heroImage: https://raw.githubusercontent.com/nebhrajani-a/sicp/master/sicp.jpg
 tagline: 
 actionText: Quick Start →
-actionLink: /Ch-2 交易所/
+actionLink: /Ch-1 快速入门/
 ---
 
 # Introduction to DeFi

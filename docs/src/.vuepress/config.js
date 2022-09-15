@@ -34,25 +34,33 @@ module.exports = {
     lastUpdated: false,
     nav: [
       {
-        text: 'Ch-1 概述',
-        link: '/Ch-1 概述/',
+        text: 'Ch-1 快速入门',
+        link: '/Ch-1 快速入门/',
       },      
       {
-        text: 'Ch-2 交易所',
-        link: '/Ch-2 交易所/',
+        text: 'Ch-2 去中心化交易所',
+        link: '/Ch-2 去中心化交易所/',
       },
       {
-        text: 'Ch-3 借贷',
-        link: '/Ch-3 借贷/'
+        text: 'Ch-3 去中心化借贷',
+        link: '/Ch-3 去中心化借贷/'
       },
       {
-        text: 'Ch-4 稳定币',
-        link: '/Ch-4 稳定币/'
+        text: 'Ch-4 去中心化稳定币',
+        link: '/Ch-4 去中心化稳定币/'
+      },
+      {
+        text: 'Ch-5 DeFi 聚合器',
+        link: '/Ch-5 DeFi 聚合器/'
+      },
+      {
+        text: 'Ch-6 去中心化衍生品',
+        link: '/Ch-6 去中心化衍生品/'
       },      
       {
-        text: 'VuePress',
-        link: 'https://v1.vuepress.vuejs.org'
-      }
+        text: 'Ch-7 附录',
+        link: '/Ch-7 附录/'
+      },            
     ],
     sidebar: {
       '/Ch-1 概述/': [
