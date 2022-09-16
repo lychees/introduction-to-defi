@@ -98,3 +98,89 @@ Solutions: the contract can include a continuous staking and curation mechanism 
 ### 11.3.3 Curve Functions
 
 There is no one “perfect” curve function for the bonding curve. It depends on the objectives of the ecosystem and the use-case. There are some functions available, linear function (y=mx + c ), power function (y = xa), exponential function (y = ax), logarithm function (y = alog (x) + b) and variation function (e.g. y = m(1 + a)logx+ b).
+
+Play with the various functions and parameters: http://bit.ly/bondingcurve
+
+It is also worth considering the use of 3D curves. The z-axis adds another dimension that can affect the token prices. This could be platform productivity level, technology adoption curve, users in the system, active users as a fraction of total users, etc.
+
+#### 11.3.3.3.1 Linear Functions
+
+Price and supply are related linearly, but it can be an issue when the project increases in demand and size. In linear functions, the first few token holders are rewarded too much in comparison to the rest of the token holders. It also does not give much to design with, only changing mand c in the equation.
+
+#### 11.3.3.2. Exponential Functions
+
+Exponential functions are good as they increase prices slowly initially, which encourages the holding of tokens. However, the function accelerates aggressively in the last 20%. This makes it volatile as it opens the market to speculation and the growth rate can be unmanageable.
+
+Logarithm functions work in the opposite way, where the prices at the start increases rapidly, which creates speculation and volatility.
+
+#### 11.3.3.3. Other Factors to consider
+
+- Incentivise early adopters
+
+- Price stabilisation at the end
+
+- Cost appreciation based on some factor of supply increasing (or productivity of platform or token)
+
+- Prevention of abuse or arbitrage
+
+- Growth of underlying product (s-curve, as a function z-axis)
+
+- Returns appropriately attractive across reasonable range or to focus more on early adopters
+
+## 11.4 Practical Questions to get Started
+
+- What function is the bonding curve used for? Decentralised exchange (instant liquidity), fundraising, curation market or something else?
+
+- How many users can the project attract and sustain? (At the introduction stage, at the maturity state)
+
+- Are both early and late adopters adequately incentivised to participate? Do you want them to be equally incentivised?
+
+- Can I attract the amount of capital needed to take the project to an adequate level of adoption?
+
+## 11.5 Two Variations to Bonding Curves
+
+### 11.5.1. Augmented Bonding Curve (ABC)
+
+This is based on complex system research. It is a design for a new incentive mechanism. The objective is to create a new funding model, governed by participants in a continuous organisation.
+
+The problem with the general bonding curve is that it is subjected to manipulation in pursuit of speculative returns. Tokens can also be burned anytime or after an arbitrary deadline.
+
+As such, ABC uses conversation principles3and mechanisms to create a robust and controlled environment to manage speculation and to align incentives to generate returns. Tokens minted in period 1 will be locked up in period 1. This is to affect the stability of reserve flow.
+
+ABC combines the general bonding curve with a funding pool, lock-up mechanism and inter-system feedback loops5.
+
+### 11.5.2. Dynamic Bonding Curve (DBC)
+
+The objective is to incentivise early adopters, punish freeloaders and encourage active participation in the ecosystem.
+
+The problem with the general bonding curve is that it can be manipulated with a large token holder transacting and increasing unfair volatility.
+
+As such, DBC adds a feature, where prices of tokens are determined by the proportion of token owned5. This encourages users to continuously participate, which is an objective in the ecosystem.
+
+## Notes
+
+It can be more than 2 variables, but we stick to a simple 2-variable model as it is possible to graph it out in a 2D graph. The more variables to add, the more dimensions are created. A 3-variable bonding curve requires a 3D graph to visualise.
+
+While most people think of a bonding curve as a 2D function, bonding curves can be a 3D function. They can also be used to facilitate trade without money, e.g., using a bonding curve to determine the relationship between upload volume and download volume. In an open-source content market, it can facilitate the exchange of information volume without money.
+
+The conservation principle is a physics principle, where energy conservation equation is subjected to a constant invariant function.
+
+For more information, check out https://medium.com/giveth/deep-dive-augmented-bonding-curves-3f1f7c1fa751 for the system design, flow and background mathematics.
+
+For more information, check out https://tokeneconomy.co/dynamic-token-bonding-curves-41d36e43befa for a case study and mathematical function.
+
+
+
+# PART 2: DECENTRALISED FINANCE
+
+# Chapter 14: Economics of Decentralised Finance (DeFi)
+
+Decentralised finance (DeFi) is the current trend in the token economics space. In general, the goal of DLT is to remove intermediaries. One of the sectors populated with many intermediaries is the financial sector. There are plenty of intermediaries in the space, from brokers to traders, relationship managers, and funds.
+
+Tokenisation brings about the possibility of codifying the majority of the business logics and executing them with machines (aka smart contracts). This frees up the margin (aka money) rewarded to intermediaries which can then be distributed to reward users in the system.
+
+Decentralised finance is important because it has the potential to revolutionise the traditional financial sector as we know it in the following ways:
+
+- Perhaps money can be managed by codifying monetary policy in machines, algorithms and smart contracts. Money can then be neutral1, without any political ties and agenda.
+
+- Or allowing trade with assets (e.g. tokens) without having a counterparty orderbook, because machines will always be
