@@ -91,33 +91,43 @@ module.exports = {
           ]   
         }
       ],
-      '/Ch-3 借贷/': [
+      '/Ch-3 去中心化借贷/': [
         {
-          title: '借贷',
+          title: 'Ch-3 去中心化借贷',
           collapsable: false,
           children: [
             '',
           ]   
         }
       ],
-      '/Ch-4 稳定币/': [
+      '/Ch-4 去中心化稳定币/': [
         {
-          title: '稳定币',
+          title: 'Ch-4 去中心化稳定币',
           collapsable: false,
           children: [
             '',
           ]   
         }
       ],
-      '/Ch-5 聚合器/': [
+      '/Ch-5 DeFi 聚合器/': [
         {
-          title: '聚合器',
+          title: 'DeFi 聚合器',
           collapsable: false,
           children: [
             '',
           ]   
         }
-      ],      
+      ],
+      '/Ch-6 去中心化衍生品/': [
+        {
+          title: 'Ch-6 去中心化衍生品',
+          collapsable: false,
+          children: [
+            '',
+            'Bounding Curve',
+          ]   
+        }
+      ],        
     }
   },
 
