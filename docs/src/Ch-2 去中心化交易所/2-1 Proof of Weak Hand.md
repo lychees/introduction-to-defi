@@ -1,4 +1,4 @@
-# 2-1 Proof of Week Hand
+# 2-1 Proof of Weak Hand
 ![v2-9a62d6dd0de088541c0b2d313c6dd24e_1440w](https://user-images.githubusercontent.com/2507027/190430432-dbf8071d-0209-4e07-9240-e1905587a650.jpg)
 
 本节我们将回到波澜壮阔的前 DeFi 时代（pre-DeFi era），回顾一个具有里程碑意义的合约 —— P3D。
@@ -322,3 +322,6 @@ Ponzi Coin 的缺陷在于，它的定价方法明显违反科学。它是一个
 
 好的答案是，上面的代码大部分段落在处理分润相关的逻辑，（同时它也没有做好代码优化！）。导致原本很简单的逻辑被写得很乱很长。
 
+## 生息代币
+
+在结束本节之前...

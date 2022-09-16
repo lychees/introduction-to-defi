@@ -83,7 +83,7 @@ module.exports = {
           collapsable: false,
           children: [
             '',
-            '2-1 Proof of Week Hand',
+            '2-1 Proof of Weak Hand',
             '2-2 Uniswap V2',
             '2-3 Curve',
             '2-4 Uniswap V3',
