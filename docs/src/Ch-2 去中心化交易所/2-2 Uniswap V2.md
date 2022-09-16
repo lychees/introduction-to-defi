@@ -6,6 +6,8 @@
 
 本章中的代码来自 V2 版本。
 
+## 生息代币与分润代币
+
 ### 里程碑
 
 - [2018-11 初版 Uniswap 在以太坊开发者大会 Devcon4 期间上线](https://uniswap.org/docs/v1/)，这是一个使用类 Python 语法的合约语言 Vyper 实现的版本。

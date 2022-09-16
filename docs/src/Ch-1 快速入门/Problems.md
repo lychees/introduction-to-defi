@@ -1,5 +1,5 @@
 # 习题
-## 1.1 分账合约（Escrow）N
+## 1.1 分账合约（Escrow）
 [这个例子来自 Vitalik、Taipei Ethereum Meetup #11 Vitalik Buterin Keynote Special](https://www.youtube.com/watch?v=MlaLRgUYeLo)
 
 让我们来看一个最简单的 DeFi 产品的例子。在现实生活中，一个项目的成功往往是有不同团队之间紧密分工的结果，
@@ -123,7 +123,7 @@ interface IERC20 {
 ### 支持一般 ERC20 代币
 
 
-## 1.2 场外担保交易合约（Secured OTC Exchange Contract）SR
+## 1.2 场外担保交易合约（Secured OTC Exchange Contract）
 这个例子来自这里：[https://www.bilibili.com/video/BV1Ht4y197h8?p=28](https://www.bilibili.com/video/BV1Ht4y197h8?p=28)
 
 ![8L5)K33L95~CTP_5 MXA05O](https://user-images.githubusercontent.com/2507027/190588887-909ed27f-05ae-4e58-8bf2-0af94163de7e.png)
