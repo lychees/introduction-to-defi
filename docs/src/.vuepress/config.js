@@ -125,6 +125,7 @@ module.exports = {
           children: [
             '',
             'Bounding Curve',
+            'DeFi',
           ]   
         }
       ],        

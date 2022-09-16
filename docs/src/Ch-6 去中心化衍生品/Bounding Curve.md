@@ -168,19 +168,3 @@ The conservation principle is a physics principle, where energy conservation equ
 For more information, check out https://medium.com/giveth/deep-dive-augmented-bonding-curves-3f1f7c1fa751 for the system design, flow and background mathematics.
 
 For more information, check out https://tokeneconomy.co/dynamic-token-bonding-curves-41d36e43befa for a case study and mathematical function.
-
-
-
-# PART 2: DECENTRALISED FINANCE
-
-# Chapter 14: Economics of Decentralised Finance (DeFi)
-
-Decentralised finance (DeFi) is the current trend in the token economics space. In general, the goal of DLT is to remove intermediaries. One of the sectors populated with many intermediaries is the financial sector. There are plenty of intermediaries in the space, from brokers to traders, relationship managers, and funds.
-
-Tokenisation brings about the possibility of codifying the majority of the business logics and executing them with machines (aka smart contracts). This frees up the margin (aka money) rewarded to intermediaries which can then be distributed to reward users in the system.
-
-Decentralised finance is important because it has the potential to revolutionise the traditional financial sector as we know it in the following ways:
-
-- Perhaps money can be managed by codifying monetary policy in machines, algorithms and smart contracts. Money can then be neutral1, without any political ties and agenda.
-
-- Or allowing trade with assets (e.g. tokens) without having a counterparty orderbook, because machines will always be
