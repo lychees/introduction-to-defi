@@ -12,16 +12,25 @@ DeFi 是去中心化金融「Decentralized Finance」的缩写，旨在通过去
 
 [^Junya]: Junya Ishigami, Freeing Architecture
 
-## 如何阅读本书
+## 阅读建议。
 
-本书不是一本密码学著作，也不是一本深入介绍以太坊、它的架构、共识算法、账户抽象以及 EVM、
-前者可以参考 Introduction to Modern Cryptography 或任何一本其它的系统的密码学著作。
-后者可以参考 Mastering Ethereum。
+本书**不是**一本密码学著作，不会介绍 [非对称加密](https://en.wikipedia.org/wiki/Public-key_cryptography)、[椭圆曲线数字签名](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm)、[零知识证明](https://en.wikipedia.org/wiki/Zero-knowledge_proof) 等内容，读者可参考：
+- [Introduction to Modern Cryptography]()
 
-本书**也**不是一本关于 Solidity 的书籍，因而不会像其它 Solidity 的书籍一样过早的浸入到那些与语法与工程相关的细节中去，这些内容可参考 Solidity Programming Essentials、Ethereum Smart Contract Development in Solidity 等著作，或者在以太坊的官网文档中查阅最新的资料。
+等密码学著作进行学习。
+
+本书**不是**一本深入介绍以太坊——它的架构、共识算法、账户抽象以及以太坊虚拟机（EVM）——的书籍，关系这些内容读者可参考：
+- [Mastering Ethereum]()
+或者以太坊黄皮书等内容了解这些细节。
+
+此外，本书**也不是**一本关于 Solidity 语言的书籍，因为不会像其它 Solidity 的书籍一样浸入到那些枯燥乏味的语法与工程细节中去，这些内容可参考：
+- [Solidity Programming Essentials]()
+- [Ethereum Smart Contract Development in Solidity]()
+- [Solidity 实战全书](https://www.books.com.tw/products/0010928889)
+
+等著作，或者在 [以太坊的官网文档](https://docs.soliditylang.org/) 查阅最新资料。
 
 本书是一本**聚焦**于研究 DeFi 类合约设计与代码结构的书籍，DeFi 是以太坊上应用最为广泛，影响力最为巨大，生命力最为繁盛的领域，熟悉 DeFi 产品的开发技术和设计方法也会对我们探索其它种类的应用起到帮助。
-
 
 ## DeFi 的特性
 

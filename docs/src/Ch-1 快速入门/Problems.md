@@ -5,6 +5,8 @@
 让我们来看一个最简单的 DeFi 产品的例子。在现实生活中，一个项目的成功往往是有不同团队之间紧密分工的结果，
 在过去不同分工的团队可能会以立定合同的方式，事先说明双方的利润分成，而当出现纠纷时，则往往需要花费非常大的代价进行维权，无形之中增加了信任的成本。
 
+### 支持以太币
+
 分账合约（Escrow）的功能是，在这个合约接收到任意转账时，都会均等的分成两份，发给另外两个事先约定的账户。
 
 ```solidity
@@ -118,13 +120,20 @@ interface IERC20 {
 }
 ```
 
-请推广这个合约的功能，支持使用一个第三方 multisig 钱包，修改参与的账户与分配比例。
+### 支持一般 ERC20 代币
 
-## 2.1 场外担保交易合约（Secured OTC Exchange Contract）SR
-这个例子来自这里：https://www.bilibili.com/video/BV1Ht4y197h8?p=28
+
+## 1.2 场外担保交易合约（Secured OTC Exchange Contract）SR
+这个例子来自这里：[https://www.bilibili.com/video/BV1Ht4y197h8?p=28](https://www.bilibili.com/video/BV1Ht4y197h8?p=28)
 
 ![8L5)K33L95~CTP_5 MXA05O](https://user-images.githubusercontent.com/2507027/190588887-909ed27f-05ae-4e58-8bf2-0af94163de7e.png)
 
+### 单笔订单
+
+
+### 多笔订单
+
+这个担保合约一次只能支持一笔订单，让我们将他进行推广。
 
 ```solidity
 // SPDX-License-Identifier: GPL-3.0
@@ -187,3 +196,8 @@ interface IERC20 {
     event Approval(address indexed owner, address indexed spender, uint256 value);
 }
 ```
+### 内存清理
+
+### 链下排序
+
+### 链下撮合

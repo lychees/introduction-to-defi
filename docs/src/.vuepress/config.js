@@ -27,6 +27,7 @@ module.exports = {
    * ref：https://v1.vuepress.vuejs.org/theme/default-theme-config.html
    */
   themeConfig: {
+    sidebarDepth: 3,    
     repo: '',
     editLinks: false,
     docsDir: '',
@@ -66,7 +67,7 @@ module.exports = {
       '/Ch-1 快速入门/': [
         {
           title: 'Ch-1 快速入门',
-          collapsable: false,
+          collapsable: true,
           children: [
             '',
             '1-1 代币标准',
