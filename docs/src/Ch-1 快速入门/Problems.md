@@ -120,5 +120,37 @@ interface IERC20 {
 
 请推广这个合约的功能，支持使用一个第三方 multisig 钱包，修改参与的账户与分配比例。
 
-## 2.1 场外担保交易合约 OTC Exchange SR
+## 2.1 场外担保交易合约（Secured OTC Exchange Contract）SR
 这个例子来自这里：https://www.bilibili.com/video/BV1Ht4y197h8?p=28
+
+```solidity
+pragma solidity ^0.4.24;
+
+contract OTC {
+    uint256 public counter;
+
+    struct Order {
+        address owner;
+        address bid_token;
+        address ask_token;
+        uint bid_amount;
+        uint ask_amount;
+    }
+
+    mapping(uint => order) public orders;
+
+    function give(uint id, address bid_token, address ask_token, uint bid_amount, uint ask_amount) public {        
+    }
+
+    function take(uint id) public {
+        orders[id].ask_token.transferFrom(msg.sender, orders[id].owner, orders[id].ask_amount);
+        orders[id].bid_token.transfer(msg.sender, orders[id].bid_amount);
+        orders.erase(id);
+    }
+
+    function withdraw(uint id) public {
+        require(msg.sender == orders[id].owner);
+        orders.erase(id);
+    }
+}
+```
