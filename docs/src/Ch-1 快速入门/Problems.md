@@ -123,6 +123,9 @@ interface IERC20 {
 ## 2.1 场外担保交易合约（Secured OTC Exchange Contract）SR
 这个例子来自这里：https://www.bilibili.com/video/BV1Ht4y197h8?p=28
 
+![8L5)K33L95~CTP_5 MXA05O](https://user-images.githubusercontent.com/2507027/190588887-909ed27f-05ae-4e58-8bf2-0af94163de7e.png)
+
+
 ```solidity
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity >=0.7.0 <0.9.0;
