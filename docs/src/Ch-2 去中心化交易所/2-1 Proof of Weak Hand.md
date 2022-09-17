@@ -331,14 +331,15 @@ Ponzi Coin 的缺陷在于，它的定价方法明显违反科学。它是一个
 - 生息
 
 
-项目	    抵押物	    可分润代币  利润来源   分润模式
-BTC         矿机        BTC        手续费    销毁
-ETH         矿机/ETH    ETH                  销毁
-Unipool     LP Token    LP Token             分红
-P3D         ETH         P3D                  分红
-Uniswap	    A/B	        LP Token             生息
-EOS Rex	    EOS	        Rex                  生息
-yDAI	    DAI	        yDAI                 生息
+| 项目	   |    抵押物	  |  可分润代币 | 利润来源  | 分润模式 |
+|----------|-------------|-------------|----------|---------|
+| BTC      | 矿机        | BTC         | 手续费    |  销毁   |
+| ETH      | 矿机/ETH    | ETH         |          | 销毁     |
+| Unipool  | LP Token    | LP Token    |          | 分红    |
+| P3D      | ETH         | P3D         |          | 分红    |
+| Uniswap  | A/B	     | LP Token    |          | 生息    |
+| EOS Rex  | EOS	     | Rex         |          | 生息    |
+| yDAI	   | DAI	     | yDAI        |          | 生息    |
 
 
 我们来设计一个等价于 P3D 的生息代币。
