@@ -7,9 +7,9 @@ P3D Token 至今依然在市面上流通，并且后续有一些项目会分配�
 
 更早时候的 Bancor，但是它的公式更为复杂，且不具备像 Uniswap 当时众筹流动性，因而没有形成之后 Uniswap 那样的普适成功。
 
-令人震惊的事实是，可分润代币应用的历史晚于自动化做市商的历史，2017 年 6 月，来自 Albert-Ludwigs 大学的软件工程系主任 Jochen Hoenicke 教授，发布了 一篇非正式的博文，介绍自己设计的一种新的 Ponzi Token，简单来说这种 Ponzi Token 使用了 80% 储备金的 Bancor 算法发行，并且使用了一种 O(1) 时间实时处理分润的算法，而合约的利润来自用户在 Bancor 中交易产生的手续费。
+令人震惊的事实是，可分润代币应用的历史晚于自动化做市商的历史，2017 年 6 月，来自 Albert-Ludwigs 大学的软件工程系主任 Jochen Hoenicke 教授，发布了 [一篇博文](https://test.jochen-hoenicke.de/crypto/ponzitoken/)，介绍自己设计的一种新的 Ponzi Token，简单来说这种 Ponzi Token 使用了 80% 储备金的 Bancor 算法发行，并且使用了一种 O(1) 时间实时处理分润的算法，而合约的利润来自用户在 Bancor 中交易产生的手续费。
 
-考古现场 -> Ropsten 0x2CB6ef99FbC78069364144E969a9A6e89E55035
+- [考古现场 -> Ropsten 0x2CB6ef99FbC78069364144E969a9A6e89E55035](https://ropsten.etherscan.io/address/0x2CB6ef99FbC78069364144E969a9A6e89E550359)
 
 不过由于 Jochen Hoenicke 教授并不是合约开发的专家，因而原版的代码里有很多 bug，有人直接拿上面的合约部署到了主网，导致了至少 2000 ETH 被骇。后来这种机制经过简化推广，被应用在了 PoWH 项目之中，PoWH 项目使用了 50% 储备金率的 Bancor，因而 Bounding Curve 是一条斜线，更容易在合约中计算，只需要用二次方程求根共识即可，后来还出现了手续费更高的 PoWH Shadow Fork，这两个项目后来也相继被黑客攻击，一个月后升级成了我们今天所熟知的 P3D。
 
