@@ -72,3 +72,8 @@ DeFi 是去中心化金融「Decentralized Finance」的缩写，旨在通过去
 —— [Donald E. Knuth, The Art of Computer Programming, fasc1](http://www.cs.utsa.edu/~wagner/knuth/)
 
 DeFi 是一个正在迅速发展的领域，因而纸质资料的一大困难就是无法保持持续的更新，例如，从 2018 年，到 2020 年，Solidity 的版本号就跨越了至少 3 个版本。因而我们选用的是一些在链上已经经过验证的经典项目的经典代码，这些代码不会因为版本的更迭而丧失生命力。
+
+## 本章的内容安排
+
+我们将从回顾以太坊中的代币标准开始，它们是 Solidity 开发过程中最重要的模块。紧接着我们介绍重点 OpenZeppelin，它就像是 Solidity 中的标准库，就像是 cpp 开发者一定会掌握 stdlib 一样。熟悉和掌握 OpenZeppelin 是一个智能合约开发者的必修课。之后我们以一些具体的例子结束本章。
+
