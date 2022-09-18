@@ -1,5 +1,7 @@
 # 本章注记
 
+- [https://zhuanlan.zhihu.com/p/40445813](https://zhuanlan.zhihu.com/p/40445813)
+
 PoWH 或许在 DeFi 的发展中特别重要，它不是第一次发明这些技术的，但是却是第一次将它们成功实现并融合在一款游戏化产品之中的。
 P3D Token 至今依然在市面上流通，并且后续有一些项目会分配一定的利润给到 P3D 社区，使得 P3D 相比于 Ponzi Coin 甚至具有了一定的 Security Token 的属性。PoWH 的续作 Fomo3D 也取得了非常有趣的成功。但随后的 TeamJust 却并没有将这些延续下去，从而在漫长的 DeFi 历史中逐渐销声匿迹了。
 
