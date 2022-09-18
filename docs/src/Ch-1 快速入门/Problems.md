@@ -138,11 +138,11 @@ pragma solidity >=0.7.0 <0.9.0;
 contract TokenExchange {
     address fromAddress;
     address fromToken;
-    uint256 fromAmount;
+    uint fromAmount;
     address toToken;
-    uint256 toAmount;
+    uint toAmount;
 
-    function CreateExchange(address _fromToken, address _toToken, uint256 _fromAmount, uint256 _toAmount) public {
+    function CreateExchange(address _fromToken, address _toToken, uint _fromAmount, uint _toAmount) public {
         IERC20(_fromToken).transferFrom(msg.sender, address(this), _fromAmount);
         fromAddress = msg.sender;
         fromToken = _fromToken;
@@ -159,21 +159,8 @@ contract TokenExchange {
 }
 
 interface IERC20 {
-    function totalSupply() external view returns (uint256);
-
-    function balanceOf(address who) external view returns (uint256);
-
-    function allowance(address owner, address spender) external view returns (uint256);
-
-    function transfer(address to, uint256 value) external returns (bool);
-
-    function approve(address spender, uint256 value) external returns (bool);
-
-    function transferFrom(address from, address to, uint256 value) external returns (bool);
-
-    event Transfer(address indexed from, address indexed to, uint256 value);
-
-    event Approval(address indexed owner, address indexed spender, uint256 value);
+    function transfer(address to, uint value) external returns (bool);
+    function transferFrom(address from, address to, uint value) external returns (bool);
 }
 ```
 
