@@ -1,6 +1,6 @@
 # Ch-1 快速入门
 
-DeFi 是去中心化金融「Decentralized Finance」的缩写，旨在通过去中心化的方式以代替中间人重新创建的金融系统，最简单的例子可能是 [分账（Escrow）](/Ch-1%20%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/Problems.html#_1-1-%E5%88%86%E8%B4%A6%E5%90%88%E7%BA%A6-escrow) 与 [场外担保交易（Over-the-counter Exchange）](/Ch-1%20快速入门/Problems.html#_1-2-场外担保交易合约-secured-otc-exchange-contract)，通过使用智能合约，可以通过十几行核心代码可以去除这些金融服务中原本由合同或者中间人完成的部分（参见本章习题）。而一旦相关的金融服务完成自动化，它们之间就可以像乐高积木一样以无许可的方式将这些模块相互组合起来而产生更加复杂的，甚至是传统金融系统无法实现的功能，例如闪电贷。
+DeFi 是去中心化金融「Decentralized Finance」的缩写，旨在通过去中心化的方式以代替中间人重新创建的金融系统，最简单的例子可能是 [分账（Escrow）](/Ch-1%20%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/Problems.html#_1-1-%E5%88%86%E8%B4%A6%E5%90%88%E7%BA%A6-escrow) 与 [场外担保交易（Over-the-counter Exchange）](/Ch-1%20快速入门/Problems.html#_1-2-场外担保交易合约-secured-otc-exchange-contract)，通过使用智能合约，可以通过十几行核心代码可以去除这些金融服务中原本由合同或者中间人完成的部分（参见本章习题）。而一旦相关的金融服务完成自动化，它们之间就可以像乐高积木一样以无许可的方式将这些模块相互组合起来而产生更加复杂的，甚至实现传统金融服务无法实现的功能，例如闪电贷（Flashloan）、MEV 等。
 
 但当这个简称在形成的时候^[DeFi]，人们已经赋予了它超过字面意思的更多含义。关于 DeFi 究竟是什麽，曾经在 Devcon-5 的周边活动 DeFi.WTF 上举行过一次大辩论，每个参与者的观点都不一致。因而我们暂且不去叩问这个术语的准确定义，而是去考察一些具体的 DeFi 产品，以试图将她的定义归纳出来。
 
@@ -12,18 +12,20 @@ DeFi 是去中心化金融「Decentralized Finance」的缩写，旨在通过去
 
 [^Junya]: Junya Ishigami, Freeing Architecture
 
-## 阅读建议。
+## 阅读建议
 
 本书**不是**一本密码学著作，不会介绍 [非对称加密](https://en.wikipedia.org/wiki/Public-key_cryptography)、[椭圆曲线数字签名](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm)、[零知识证明](https://en.wikipedia.org/wiki/Zero-knowledge_proof) 等内容，读者可参考：
 - [Introduction to Modern Cryptography]()
 
-等密码学著作进行学习。
+等密码学著作进行学习相关知识。
 
-本书**不是**一本深入介绍以太坊——它的架构、共识算法、账户抽象以及以太坊虚拟机（EVM）——的书籍，关系这些内容读者可参考：
-- [Mastering Ethereum]()
-或者以太坊黄皮书等内容了解这些细节。
+本书**不是**一本深入介绍以太坊——它的架构、共识算法、账户抽象以及以太坊虚拟机（EVM）——的书籍，关于这些内容读者可参考：
+- [Mastering Ethereum](https://github.com/ethereumbook/ethereumbook)
+- [Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf)
 
-此外，本书**也不是**一本关于 Solidity 语言的书籍，因为不会像其它 Solidity 的书籍一样浸入到那些枯燥乏味的语法与工程细节中去，这些内容可参考：
+等文献了解其中的秘辛。
+
+此外，本书**也不是**一本关于 Solidity 语言的书籍，它不会像这类书籍一样浸入到枯燥且乏味的语法与工程细节中去，关于这些细节可参考：
 - [Solidity Programming Essentials]()
 - [Ethereum Smart Contract Development in Solidity]()
 - [Solidity 实战全书](https://www.books.com.tw/products/0010928889)
@@ -32,17 +34,15 @@ DeFi 是去中心化金融「Decentralized Finance」的缩写，旨在通过去
 
 本书是一本**聚焦**于研究 DeFi 类合约设计与代码结构的书籍，DeFi 是以太坊上应用最为广泛，影响力最为巨大，生命力最为繁盛的领域，熟悉 DeFi 产品的开发技术和设计方法也会对我们探索其它种类的应用起到帮助。
 
+## 非投资建议 
 
-## 非投资建议
+![image](https://user-images.githubusercontent.com/2507027/190898973-c4dc61d0-c845-4287-95af-d9c8263713bb.png)
 
-但是需要注意的是
+需要注意的是，本书不是一本投资书籍，她提到的所有项目，有些已经消亡在历史中了，有的则依然存活，只是作为学术价值，不应作为投资建议。
 
 ## DeFi 的特性
 
 去中心化是 DeFi 产品的最核心特征，也是 DeFi 产品的基石。值得留意的是，去中心化与否并非二元对立，非 0 既 1 的结果，而是一个连续的光谱，光谱的两端分别是由主宰（中心化服务器）控制的虫族，和由卡拉（共识算法）连接的神族。
-
-![](https://i.imgur.com/8Ao9HoH.png)
-> 即将死于「单点故障」的异鬼军团
 
 同样是一个细分领域的 DeFi 产品，它们的去中心化程度也 [很可能是不同的](https://orange.xyz/p/393)。《精通比特币》的作者曾经在直播时做过一次 QA 回答 [What Makes a Currency a Cryptocurrency?](https://www.youtube.com/watch?v=HX99C7NCWaM)，我们不妨也模仿他的思路来探讨 DeFi 中的 “De” 具体体现在哪里。
 
@@ -59,7 +59,7 @@ DeFi 是去中心化金融「Decentralized Finance」的缩写，旨在通过去
 
 - 链上治理
 
-[潘超：如何权衡 DeFi 的中心化与去中心化？](https://www.chainnews.com/articles/009361859090.htm)
+- [潘超：如何权衡 DeFi 的中心化与去中心化？](https://www.chainnews.com/articles/009361859090.htm)
 
 ## 如何使用 DeFi 产品
 
@@ -68,14 +68,16 @@ DeFi 是去中心化金融「Decentralized Finance」的缩写，旨在通过去
 
 ## 写书过程中的挑战
 
-> Although I'm trying my best to write comprehensive aounts that need no further revision, I know that every page brings me hundreds of opportunities to make mistakes and to miss important ideas. My files are bursting with notes about beautiful algorithms that have been disovered, but computer science has grown to the point where I cannot hope to be an authority on all the material I wish to cover. Therefore I need extensive feedbak from readers before I can finalize the volumes.
+> Although I'm trying my best to write comprehensive aounts that need no further revision, I know that every page brings me hundreds of opportunities to make mistakes and to miss important ideas. My files are bursting with notes about beautiful algorithms that have been discovered, but computer science has grown to the point where I cannot hope to be an authority on all the material I wish to cover. Therefore I need extensive feedback from readers before I can finalize the volumes.
 —— [Donald E. Knuth, The Art of Computer Programming, fasc1](http://www.cs.utsa.edu/~wagner/knuth/)
 
 DeFi 是一个正在迅速发展的领域，因而纸质资料的一大困难就是无法保持持续的更新，例如，从 2018 年，到 2020 年，Solidity 的版本号就跨越了至少 3 个版本。因而我们选用的是一些在链上已经经过验证的经典项目的经典代码，这些代码不会因为版本的更迭而丧失生命力。
 
+幸运的是，我们有比 Knuth 时代更方便的工具。本书的主页是 [https://github.com/lychees/introduction-to-defi](https://github.com/lychees/introduction-to-defi)，你可以看到本书的创作和修订过程，并即时修正各种错误。
+
 ## 本章的内容安排
 
-我们将从回顾以太坊中的代币标准开始，它们是 Solidity 开发过程中最重要的模块。紧接着我们介绍重点 OpenZeppelin，它就像是 Solidity 中的标准库，就像是 cpp 开发者一定会掌握 stdlib 一样。熟悉和掌握 OpenZeppelin 是一个智能合约开发者的必修课。
+我们将从回顾以太坊中的代币标准开始，它们是 Solidity 开发过程中最重要的模块。紧接着我们介绍重点 OpenZeppelin，它就像是 Solidity 中的标准库，就像是 cpp 开发者一定会掌握 [stdlib](https://en.cppreference.com/w/cpp) 一样。熟悉和掌握 OpenZeppelin 是一个智能合约开发者的必修课。
 
 本章的剩下部分我们将看到实践中几个具体使用 ERC-20 标准的例子。互通性是 DeFi 的最重要特性之一，1-3 与 1-4 节中我们将看到如何使用接口（Interface）与其它合约进行通信，1-5 节中我们将使用继承（Inheritance），在 ERC-20 标准的基础上进一步扩展功能。
 
