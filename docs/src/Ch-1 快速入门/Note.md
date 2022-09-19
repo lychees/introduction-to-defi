@@ -1,10 +1,12 @@
 
 # 本章注记
 
-## 比特币与区块链
-关于区块链的知识很多分散在互联网上，最系统性的纸质资料是 [德烈亚斯·安东诺普洛斯(Andreas Antonopoulos)](https://en.wikipedia.org/wiki/Andreas_Antonopoulos) 所撰写的系列书籍。
--[《精通比特币》](https://github.com/bitcoinbook/bitcoinbook)
--[《精通以太坊》](https://github.com/ethereumbook/ethereumbook)。
+## 比特币与以太坊
+区块链的知识很多分散在互联网上，最系统性的纸质资料是 [德烈亚斯·安东诺普洛斯(Andreas Antonopoulos)](https://en.wikipedia.org/wiki/Andreas_Antonopoulos) 所撰写的系列书籍：
+- [《精通比特币》](https://github.com/bitcoinbook/bitcoinbook)
+- [《精通以太坊》](https://github.com/ethereumbook/ethereumbook)
+
+关于比特币诞生前后的壮丽历史，可以观看 2014 年的纪录片[《比特币的崛起》（The Rise and Rise of Bitcoin）](https://www.bilibili.com/video/BV1K441177JB)，以太坊的创始人之一 Vitalik Buterin 也在这部纪录片中出镜，那时的他还在为 Bitcoin Magazine 撰写文章。关于以太坊诞生前后的历史，可以阅读 theDefiant 主编 Camila Russo 所写的 [The Infinite Machine: How an Army of Crypto-hackers Is Building the Next Internet with Ethereum](https://www.amazon.co.uk/Infinite-Machine-Crypto-hackers-Building-Internet-ebook/dp/B07X8HS2WC) 一书。
 
 ## Solidity
 最简单和主流智能合约开发语言是以太坊的 Solidity。关于 Solidity 的相关知识最全面的介绍是 [以太坊官方文档](https://docs.soliditylang.org/)。Youtube 主播 Hung-Ying Tai，也做过两期全面的关于 Solidity 开发的介绍，包括 [2018](https://www.youtube.com/watch?v=z2FEikbDqoA&list=PLHmOMPRfmOxSJcrlwyandWYiuP9ZAMYoF) 和 [2020](https://www.youtube.com/watch?v=l6xmGVweJyk&list=PLHmOMPRfmOxQ3HSlId8KAKxnt8yuyTZVk) 两个版本。

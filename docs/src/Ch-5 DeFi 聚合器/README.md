@@ -24,7 +24,116 @@ v2
 
 ## 金库 Vaults
 
+金库合约用来存储底层资产，同时它本身也生成对应的生息代币 —— yToken。
+例如当递增资产是 USDC 时，该合约的符号即为 yUSDC。
+
+因为本身也是代币，所以该合约集成自 ERC-20 合约，并需要实现对应的接口。
+
+```python
+from vyper.interfaces import ERC20
+
+implements: ERC20
+
+
+interface DetailedERC20:
+    def name() -> String[42]: view
+    def symbol() -> String[20]: view
+    def decimals() -> uint256: view
+
+
+interface Strategy:
+    def want() -> address: view
+    def vault() -> address: view
+    def isActive() -> bool: view
+    def delegatedAssets() -> uint256: view
+    def estimatedTotalAssets() -> uint256: view
+    def withdraw(_amount: uint256) -> uint256: nonpayable
+    def migrate(_newStrategy: address): nonpayable
+
+name: public(String[64])
+symbol: public(String[32])
+decimals: public(uint256)
+
+balanceOf: public(HashMap[address, uint256])
+allowance: public(HashMap[address, HashMap[address, uint256]])
+totalSupply: public(uint256)
+
+token: public(ERC20)
+governance: public(address)
+management: public(address)
+guardian: public(address)
+pendingGovernance: address
+
+struct StrategyParams:
+    performanceFee: uint256  # Strategist's fee (basis points)
+    activation: uint256  # Activation block.timestamp
+    debtRatio: uint256  # Maximum borrow amount (in BPS of total assets)
+    minDebtPerHarvest: uint256  # Lower limit on the increase of debt since last harvest
+    maxDebtPerHarvest: uint256  # Upper limit on the increase of debt since last harvest
+    lastReport: uint256  # block.timestamp of the last time a report occured
+    totalDebt: uint256  # Total outstanding debt that Strategy has
+    totalGain: uint256  # Total returns that Strategy has realized for Vault
+    totalLoss: uint256  # Total losses that Strategy has realized for Vault
+
+event Transfer:
+    sender: indexed(address)
+    receiver: indexed(address)
+    value: uint256
+
+
+event Approval:
+    owner: indexed(address)
+    spender: indexed(address)
+    value: uint256
+```
+
+除此之外，作为生息代币还需要实现 `deposit()` 和 `withdraw()` 方法，用来支持储蓄和赎回。
+
+### 恒等式
+
+根据 1-5 节的介绍，生息代币的核心是底层代币和生息代币之间进行兑换的恒等式。
+
+```python
+@view
+@internal
+def _shareValue(shares: uint256) -> uint256:
+    # Returns price = 1:1 if vault is empty
+    if self.totalSupply == 0:
+        return shares
+
+    # Determines the current value of `shares`.
+    # NOTE: if sqrt(Vault.totalAssets()) >>> 1e39, this could potentially revert
+
+    return (
+        shares
+        * self._freeFunds()
+        / self.totalSupply
+    )
+
+
+@view
+@internal
+def _sharesForAmount(amount: uint256) -> uint256:
+    # Determines how many shares `amount` of token would receive.
+    # See dev note on `deposit`.
+    _freeFunds: uint256 = self._freeFunds()
+    if _freeFunds > 0:
+        # NOTE: if sqrt(token.totalSupply()) > 1e37, this could potentially revert
+        return  (
+            amount
+            * self.totalSupply
+            / _freeFunds 
+        )
+    else:
+        return 0
+```
+
+有了这两个函数，我们就可以实现对应的 `deposit()` 和 `withdraw()` 函数了。
+
 ### Deposit
+
+`deposit()` 的逻辑相对简单，合约首先进行必要的检查，随后计算出对应需要印发的生息代币数，增加给储户即可。
+
 ```python
 @external
 @nonreentrant("withdraw")
@@ -91,6 +200,9 @@ def deposit(_amount: uint256 = MAX_UINT256, recipient: address = msg.sender) -> 
 ```
 
 ### Withdraw
+
+`withdraw()` 和上述 `deposit()` 函数对称，但是当合约当前可用余额不足时，需要主动将底层资产从投资策略中赎回。
+
 ```python
 @external
 @nonreentrant("withdraw")
