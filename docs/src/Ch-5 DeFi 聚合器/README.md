@@ -23,5 +23,208 @@ v2
 
 
 ## 金库 Vaults
+
+### Deposit
+```python
+@external
+@nonreentrant("withdraw")
+def deposit(_amount: uint256 = MAX_UINT256, recipient: address = msg.sender) -> uint256:
+    """
+    @notice
+        Deposits `_amount` `token`, issuing shares to `recipient`. If the
+        Vault is in Emergency Shutdown, deposits will not be accepted and this
+        call will fail.
+    @dev
+        Measuring quantity of shares to issues is based on the total
+        outstanding debt that this contract has ("expected value") instead
+        of the total balance sheet it has ("estimated value") has important
+        security considerations, and is done intentionally. If this value were
+        measured against external systems, it could be purposely manipulated by
+        an attacker to withdraw more assets than they otherwise should be able
+        to claim by redeeming their shares.
+        On deposit, this means that shares are issued against the total amount
+        that the deposited capital can be given in service of the debt that
+        Strategies assume. If that number were to be lower than the "expected
+        value" at some future point, depositing shares via this method could
+        entitle the depositor to *less* than the deposited value once the
+        "realized value" is updated from further reports by the Strategies
+        to the Vaults.
+        Care should be taken by integrators to account for this discrepancy,
+        by using the view-only methods of this contract (both off-chain and
+        on-chain) to determine if depositing into the Vault is a "good idea".
+    @param _amount The quantity of tokens to deposit, defaults to all.
+    @param recipient
+        The address to issue the shares in this Vault to. Defaults to the
+        caller's address.
+    @return The issued Vault shares.
+    """
+    assert not self.emergencyShutdown  # Deposits are locked out
+    assert recipient not in [self, ZERO_ADDRESS]
+
+    amount: uint256 = _amount
+
+    # If _amount not specified, transfer the full token balance,
+    # up to deposit limit
+    if amount == MAX_UINT256:
+        amount = min(
+            self.depositLimit - self._totalAssets(),
+            self.token.balanceOf(msg.sender),
+        )
+    else:
+        # Ensure deposit limit is respected
+        assert self._totalAssets() + amount <= self.depositLimit
+
+    # Ensure we are depositing something
+    assert amount > 0
+
+    # Issue new shares (needs to be done before taking deposit to be accurate)
+    # Shares are issued to recipient (may be different from msg.sender)
+    # See @dev note, above.
+    shares: uint256 = self._issueSharesForAmount(recipient, amount)
+
+    # Tokens are transferred from msg.sender (may be different from _recipient)
+    self.erc20_safe_transferFrom(self.token.address, msg.sender, self, amount)
+    
+    log Deposit(recipient, shares, amount)
+
+    return shares  # Just in case someone wants them
+```
+
+### Withdraw
+```python
+@external
+@nonreentrant("withdraw")
+def withdraw(
+    maxShares: uint256 = MAX_UINT256,
+    recipient: address = msg.sender,
+    maxLoss: uint256 = 1,  # 0.01% [BPS]
+) -> uint256:
+    """
+    @notice
+        Withdraws the calling account's tokens from this Vault, redeeming
+        amount `_shares` for an appropriate amount of tokens.
+        See note on `setWithdrawalQueue` for further details of withdrawal
+        ordering and behavior.
+    @dev
+        Measuring the value of shares is based on the total outstanding debt
+        that this contract has ("expected value") instead of the total balance
+        sheet it has ("estimated value") has important security considerations,
+        and is done intentionally. If this value were measured against external
+        systems, it could be purposely manipulated by an attacker to withdraw
+        more assets than they otherwise should be able to claim by redeeming
+        their shares.
+        On withdrawal, this means that shares are redeemed against the total
+        amount that the deposited capital had "realized" since the point it
+        was deposited, up until the point it was withdrawn. If that number
+        were to be higher than the "expected value" at some future point,
+        withdrawing shares via this method could entitle the depositor to
+        *more* than the expected value once the "realized value" is updated
+        from further reports by the Strategies to the Vaults.
+        Under exceptional scenarios, this could cause earlier withdrawals to
+        earn "more" of the underlying assets than Users might otherwise be
+        entitled to, if the Vault's estimated value were otherwise measured
+        through external means, accounting for whatever exceptional scenarios
+        exist for the Vault (that aren't covered by the Vault's own design.)
+        In the situation where a large withdrawal happens, it can empty the 
+        vault balance and the strategies in the withdrawal queue. 
+        Strategies not in the withdrawal queue will have to be harvested to 
+        rebalance the funds and make the funds available again to withdraw.
+    @param maxShares
+        How many shares to try and redeem for tokens, defaults to all.
+    @param recipient
+        The address to issue the shares in this Vault to. Defaults to the
+        caller's address.
+    @param maxLoss
+        The maximum acceptable loss to sustain on withdrawal. Defaults to 0.01%.
+        If a loss is specified, up to that amount of shares may be burnt to cover losses on withdrawal.
+    @return The quantity of tokens redeemed for `_shares`.
+    """
+    shares: uint256 = maxShares  # May reduce this number below
+
+    # Max Loss is <=100%, revert otherwise
+    assert maxLoss <= MAX_BPS
+
+    # If _shares not specified, transfer full share balance
+    if shares == MAX_UINT256:
+        shares = self.balanceOf[msg.sender]
+
+    # Limit to only the shares they own
+    assert shares <= self.balanceOf[msg.sender]
+
+    # Ensure we are withdrawing something
+    assert shares > 0
+
+    # See @dev note, above.
+    value: uint256 = self._shareValue(shares)
+
+    if value > self.token.balanceOf(self):
+        totalLoss: uint256 = 0
+        # We need to go get some from our strategies in the withdrawal queue
+        # NOTE: This performs forced withdrawals from each Strategy. During
+        #       forced withdrawal, a Strategy may realize a loss. That loss
+        #       is reported back to the Vault, and the will affect the amount
+        #       of tokens that the withdrawer receives for their shares. They
+        #       can optionally specify the maximum acceptable loss (in BPS)
+        #       to prevent excessive losses on their withdrawals (which may
+        #       happen in certain edge cases where Strategies realize a loss)
+        for strategy in self.withdrawalQueue:
+            if strategy == ZERO_ADDRESS:
+                break  # We've exhausted the queue
+
+            vault_balance: uint256 = self.token.balanceOf(self)
+            if value <= vault_balance:
+                break  # We're done withdrawing
+
+            amountNeeded: uint256 = value - vault_balance
+
+            # NOTE: Don't withdraw more than the debt so that Strategy can still
+            #       continue to work based on the profits it has
+            # NOTE: This means that user will lose out on any profits that each
+            #       Strategy in the queue would return on next harvest, benefiting others
+            amountNeeded = min(amountNeeded, self.strategies[strategy].totalDebt)
+            if amountNeeded == 0:
+                continue  # Nothing to withdraw from this Strategy, try the next one
+
+            # Force withdraw amount from each Strategy in the order set by governance
+            loss: uint256 = Strategy(strategy).withdraw(amountNeeded)
+            withdrawn: uint256 = self.token.balanceOf(self) - vault_balance
+
+            # NOTE: Withdrawer incurs any losses from liquidation
+            if loss > 0:
+                value -= loss
+                totalLoss += loss
+                self._reportLoss(strategy, loss)
+
+            # Reduce the Strategy's debt by the amount withdrawn ("realized returns")
+            # NOTE: This doesn't add to returns as it's not earned by "normal means"
+            self.strategies[strategy].totalDebt -= withdrawn
+            self.totalDebt -= withdrawn
+
+        # NOTE: We have withdrawn everything possible out of the withdrawal queue
+        #       but we still don't have enough to fully pay them back, so adjust
+        #       to the total amount we've freed up through forced withdrawals
+        vault_balance: uint256 = self.token.balanceOf(self)
+        if value > vault_balance:
+            value = vault_balance
+            # NOTE: Burn # of shares that corresponds to what Vault has on-hand,
+            #       including the losses that were incurred above during withdrawals
+            shares = self._sharesForAmount(value + totalLoss)
+
+        # NOTE: This loss protection is put in place to revert if losses from
+        #       withdrawing are more than what is considered acceptable.
+        assert totalLoss <= maxLoss * (value + totalLoss) / MAX_BPS
+
+    # Burn shares (full value of what is being withdrawn)
+    self.totalSupply -= shares
+    self.balanceOf[msg.sender] -= shares
+    log Transfer(msg.sender, ZERO_ADDRESS, shares)
+
+    # Withdraw remaining balance to _recipient (may be different to msg.sender) (minus fee)
+    self.erc20_safe_transfer(self.token.address, recipient, value)
+    log Withdraw(recipient, shares, value)
+    
+    return value
+```
+
 ## 控制器 Controller
 ## 策略 Strategies
