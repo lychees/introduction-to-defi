@@ -1,4 +1,5 @@
 # Ch-2 去中心化交易所
+- [https://twitter.com/dittojobrr/status/1554789416995942400](https://twitter.com/dittojobrr/status/1554789416995942400)
 
 去中心化交易所（Decentralized Exchange, a.k.a., Dex）是 DeFi 生态中占据绝对中心地位的产品，
 它提供了诸如预言机，链上流动性等基础设施，不仅为人类提供了无许可的交易功能，也为其它 DeFi 产品提供了可供交互的接口，并成为了成千上万的自动机器人提供了套利交易的场所，为黑客提供了最终套现离场的手段w。

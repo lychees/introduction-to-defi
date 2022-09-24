@@ -1,5 +1,9 @@
 # 附录
 
+## Bitcoin
+https://t.me/algorithm_daily_of_minako/6638
+## 分叉
+
 ## 多签合约
 ## 时间锁
 
